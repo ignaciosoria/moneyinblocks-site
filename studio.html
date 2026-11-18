@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blocks Studio — Animated explainers in code</title>
-<meta name="description" content="Blocks Studio: the system behind Money in Blocks. Animated explainer videos about any topic, written in code with Claude Code. Join the waitlist.">
+<meta name="description" content="Blocks Studio: the system behind Money in Blocks. Animated explainer videos about any topic, written in code with Claude Code. $49, one-time.">
 <meta name="theme-color" content="#F6F1E7">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://moneyinblocks.com/studio.html">
@@ -251,8 +251,7 @@
     </div>
 
     <div class="studio-cta">
-      <a class="cta" id="waitlist-cta" href="https://shop.moneyinblocks.com/b/m4nor">Join the waitlist <span class="arr" aria-hidden="true">→</span></a>
-      <a class="buy" id="buy-cta" aria-disabled="true" role="link">Buy <span>Coming soon</span></a>
+      <a class="cta" id="buy-cta" href="https://shop.moneyinblocks.com/b/QK8qt">Get Blocks Studio · $49 <span class="arr" aria-hidden="true">→</span></a>
     </div>
     <p class="disclaim">Not affiliated with Anthropic. Claude and Claude Code are products of Anthropic; ElevenLabs and Remotion belong to their owners. You pay for those services separately.</p>
   </div>
@@ -273,18 +272,11 @@
 
 <script>
   /* Blocks Studio links: change only these two lines. */
-  const WAITLIST_URL = "https://shop.moneyinblocks.com/b/m4nor";   // free Payhip product "Blocks Studio — Waitlist". Empty = email to hello@moneyinblocks.com
-  const BUY_URL = "";        // Payhip checkout link. Empty = "Coming soon" (button off)
+  // Buy button: the Payhip product "Blocks Studio" ($49), linked directly in the HTML above (id="buy-cta").
 
   document.querySelectorAll(".vid video").forEach(v => v.addEventListener("play", () =>
     document.querySelectorAll(".vid video").forEach(o => { if (o !== v) o.pause(); })));
 
-  if (WAITLIST_URL) document.getElementById("waitlist-cta").href = WAITLIST_URL;
-  const buy = document.getElementById("buy-cta");
-  if (BUY_URL) {
-    buy.href = BUY_URL; buy.removeAttribute("aria-disabled"); buy.removeAttribute("role");
-    buy.innerHTML = "Buy Blocks Studio <span aria-hidden=\"true\">→</span>";
-  }
 </script>
 </body>
 </html>
