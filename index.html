@@ -103,6 +103,12 @@
   .socials a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
   .socials a span{font-weight:600;font-size:14px;color:var(--muted)}
 
+  /* top nav: two tabs */
+  .topnav{display:flex;align-items:center;gap:4px;padding:4px;border:2px solid var(--ink);border-radius:12px;background:var(--ivory-2)}
+  .topnav a.tab{padding:7px 14px;border-radius:8px;text-decoration:none;white-space:nowrap;font-weight:700;font-size:15px;color:var(--muted)}
+  .topnav a.tab:hover{color:var(--ink);background:var(--ivory)}
+  .topnav a.tab.on{background:var(--ink);color:#fff;font-weight:900}
+
   footer{border-top:2px solid var(--ink);padding:32px 0 48px;font-size:14px;color:var(--muted)}
   footer p{margin:0 0 12px;max-width:52em}
   footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;font-weight:600}
@@ -118,6 +124,10 @@
     section{padding:44px 0}
     .paid{padding:28px 22px;border-radius:18px}
     .card{box-shadow:6px 6px 0 var(--ink)}
+  }
+  @media (max-width:520px){
+    .brand{font-size:0;gap:0}
+    .topnav a.tab{padding:7px 11px;font-size:14px}
   }
   @media (max-width:380px){
     .wrap{padding:0 16px}
@@ -136,6 +146,10 @@
       Money in Blocks
     </a>
     <span class="tagline">Everyday money, explained.</span>
+    <nav class="topnav" aria-label="Main">
+      <a href="index.html" class="tab on" aria-current="page">Budget</a>
+      <a href="studio.html" class="tab">Blocks Studio</a>
+    </nav>
   </div>
 </header>
 
@@ -213,6 +227,7 @@
     </div>
   </div>
 </section>
+
 </main>
 
 <footer>

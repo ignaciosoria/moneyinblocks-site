@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blocks Studio — Animated explainers in code</title>
+<meta name="description" content="Blocks Studio: the system behind Money in Blocks. Animated explainer videos about any topic, written in code with Claude Code. Join the waitlist.">
+<meta name="theme-color" content="#F6F1E7">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://moneyinblocks.com/studio.html">
+<meta property="og:title" content="Blocks Studio — Animated explainers in code">
+<meta property="og:description" content="No camera, no editing app: animated explainers written in code with Claude Code.">
+<meta property="og:image" content="https://moneyinblocks.com/assets/icon.png">
+<link rel="canonical" href="https://moneyinblocks.com/studio.html">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F6F1E7; --ivory-2:#FFFDF8; --ink:#14213D; --navy:#2B3A67; --sky:#9DBBDF; --red:#C8483F;
+    --muted:rgba(20,33,61,.62); --line:rgba(20,33,61,.14);
+    --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif; --serif:"DM Serif Display",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--ivory);color:var(--ink);font:500 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .logo{display:block;flex:none}
+
+  /* masthead */
+  .mast{border-bottom:2px solid var(--ink)}
+  .mast .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:17px;letter-spacing:-.02em;white-space:nowrap}
+  .tagline{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--muted);white-space:nowrap}
+
+  /* hero */
+  .hero{padding:36px 0 56px}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;margin:0}
+  .kicker:before{content:"";width:34px;height:6px;background:var(--red);flex:none}
+  h1{margin:18px 0 16px;line-height:.98;letter-spacing:-.035em}
+  h1 .l1{display:block;font-weight:900;font-size:clamp(34px,9.6vw,58px)}
+  h1 .l2{display:block;font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red);font-size:clamp(46px,7vw,72px);letter-spacing:-.01em;margin-top:2px}
+  .lede{font-size:18px;max-width:31em;margin:0 0 24px;color:rgba(20,33,61,.84)}
+  .cta{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:420px;min-height:64px;padding:16px 24px;
+       background:var(--red);color:#fff;text-decoration:none;font-weight:900;font-size:20px;letter-spacing:-.01em;border-radius:14px;
+       box-shadow:0 5px 0 #8f2f28;transition:transform .12s,box-shadow .12s}
+  .cta:hover{transform:translateY(-1px)}
+  .cta:active{transform:translateY(4px);box-shadow:0 1px 0 #8f2f28}
+  .cta .arr{font-size:22px;line-height:1}
+  .fine{display:flex;flex-wrap:wrap;gap:6px 16px;margin:16px 0 0;padding:0;list-style:none;font-size:14px;font-weight:600;color:var(--muted)}
+  .fine li{display:flex;align-items:center;gap:7px}
+  .fine li:before{content:"";width:8px;height:8px;border-radius:2px;background:var(--navy)}
+
+  /* hero art: the $900 split into blocks */
+  .card{background:var(--ivory-2);border:2px solid var(--ink);border-radius:18px;padding:22px;box-shadow:8px 8px 0 var(--ink)}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;gap:12px}
+  .small{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .bal{font-weight:900;font-size:34px;letter-spacing:-.03em;line-height:1}
+  .free{font-family:var(--serif);font-style:italic;color:var(--red);font-size:46px;line-height:1;text-align:right}
+  .rows{display:grid;gap:8px}
+  .row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-size:14px;font-weight:600}
+  .row b{font-weight:900}
+  .bar{grid-column:1/-1;height:12px;border-radius:4px;background:var(--navy)}
+  .row.s .bar{background:var(--sky)} .row.r{color:var(--red)} .row.r .bar{background:var(--red)}
+
+  /* sections */
+  section{padding:56px 0;border-top:2px solid var(--ink)}
+  h2{margin:12px 0 14px;font-weight:900;font-size:clamp(30px,4.4vw,48px);line-height:1.02;letter-spacing:-.03em;max-width:17em}
+  h2 em{font-family:var(--serif);font-weight:400;color:var(--red);letter-spacing:-.01em}
+  .sub{max-width:36em;margin:0;color:rgba(20,33,61,.8)}
+  .blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 0;padding:0;list-style:none}
+  .blocks li{border-top:6px solid var(--navy);padding-top:14px}
+  .blocks li:nth-child(3){border-color:var(--red)}
+  .blocks strong{display:block;font-weight:900;font-size:19px;letter-spacing:-.02em;margin-bottom:4px}
+  .blocks span{color:rgba(20,33,61,.76);font-size:16px}
+  .again{margin-top:32px}
+
+  /* paid product */
+  .paid{background:var(--ink);color:#fff;border-radius:22px;padding:40px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .paid .kicker{color:rgba(255,255,255,.62)}
+  .paid h2{color:#fff}
+  .paid h2 em{color:#F08A80}
+  .paid p{color:rgba(255,255,255,.8);margin:0 0 22px;max-width:30em}
+  .pro-link{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;min-height:52px;margin-top:18px;padding:12px 20px;
+            border:2px solid var(--ink);border-radius:14px;text-decoration:none;font-weight:700;font-size:16px;background:var(--ivory-2)}
+  .pro-link:hover{box-shadow:4px 4px 0 var(--ink);transform:translate(-2px,-2px)}
+  .pro-link span{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:#fff;padding:4px 8px;border-radius:6px;white-space:nowrap}
+  html{scroll-behavior:smooth}
+  .btn2{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:15px 22px;border-radius:12px;background:var(--ivory);color:var(--ink);
+        text-decoration:none;font-weight:900;font-size:17px}
+  .btn2:hover{background:#fff}
+  .paid ul{list-style:none;margin:0;padding:0}
+  .paid li{padding:12px 0;border-top:1px solid rgba(255,255,255,.16);display:flex;gap:12px;font-size:16px}
+  .paid li:before{content:"";flex:none;width:10px;height:10px;margin-top:8px;border-radius:2px;background:var(--sky)}
+
+  /* channel */
+  .socials{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+  .socials a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px;border:2px solid var(--ink);border-radius:14px;
+             text-decoration:none;font-weight:900;font-size:18px;background:var(--ivory-2);transition:transform .12s,box-shadow .12s}
+  .socials a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+  .socials a span{font-weight:600;font-size:14px;color:var(--muted)}
+
+  /* top nav: two tabs */
+  .topnav{display:flex;align-items:center;gap:4px;padding:4px;border:2px solid var(--ink);border-radius:12px;background:var(--ivory-2)}
+  .topnav a.tab{padding:7px 14px;border-radius:8px;text-decoration:none;white-space:nowrap;font-weight:700;font-size:15px;color:var(--muted)}
+  .topnav a.tab:hover{color:var(--ink);background:var(--ivory)}
+  .topnav a.tab.on{background:var(--ink);color:#fff;font-weight:900}
+
+  /* Blocks Studio */
+  section.first{border-top:0;padding-top:40px}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:32px 0 0;padding:0;list-style:none;counter-reset:st}
+  .steps li{position:relative;background:var(--ivory-2);border:2px solid var(--ink);border-radius:14px;padding:16px 16px 18px;counter-increment:st}
+  .steps li:before{content:counter(st);display:grid;place-items:center;width:30px;height:30px;border-radius:7px;background:var(--navy);color:#fff;font-weight:900;font-size:15px;margin-bottom:12px}
+  .steps li:last-child:before{background:var(--red)}
+  .steps li:not(:last-child):after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);font-weight:900;font-size:18px;background:var(--ivory);line-height:1;padding:2px 0;z-index:1}
+  .steps strong{display:block;font-weight:900;font-size:19px;letter-spacing:-.02em;margin-bottom:4px}
+  .steps span{display:block;color:rgba(20,33,61,.76);font-size:15px;line-height:1.45}
+  .proof{margin-top:44px}
+  .covers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+  .vid{margin:0}
+  .vid video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border:2px solid var(--ink);border-radius:12px;background:var(--ink)}
+  .vid figcaption{margin-top:8px;font-weight:700;font-size:14px;line-height:1.3}
+  .caption{font-size:14px;color:var(--muted);margin:10px 0 0}
+  .incl{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:44px}
+  .incl .card{padding:26px}
+  .incl h3{margin:0 0 4px;font-weight:900;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .draft{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;background:#F3D9A4;color:var(--ink);padding:4px 8px;border-radius:6px}
+  .ticks{list-style:none;margin:12px 0 0;padding:0}
+  .ticks li{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:16px}
+  .ticks li:before{content:"";flex:none;width:10px;height:10px;margin-top:8px;border-radius:2px;background:var(--navy)}
+  .ticks li b{font-weight:900}
+  .req{border:2px dashed var(--line);border-radius:18px;padding:24px}
+  .req .ticks li:before{background:var(--sky)}
+  .studio-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:36px}
+  .studio-cta .cta{width:auto;min-width:280px}
+  .buy{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:64px;padding:16px 24px;border:2px solid var(--ink);border-radius:14px;
+       background:var(--ivory-2);color:var(--ink);text-decoration:none;font-weight:900;font-size:18px}
+  .buy[aria-disabled="true"]{opacity:.55;cursor:not-allowed;border-style:dashed}
+  .buy span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:#fff;padding:4px 8px;border-radius:6px}
+  .disclaim{font-size:13px;color:var(--muted);margin:18px 0 0;max-width:46em}
+
+  footer{border-top:2px solid var(--ink);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+  footer p{margin:0 0 12px;max-width:52em}
+  footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;font-weight:600}
+  footer nav a{text-decoration:none}
+  footer nav a:hover{color:var(--ink);text-decoration:underline}
+
+  @media (max-width:860px){
+    .tagline{display:none}
+    .hero{padding:24px 0 44px}
+    .hero .wrap,.paid{grid-template-columns:1fr;gap:32px}
+    .blocks{grid-template-columns:1fr;gap:18px}
+    .socials{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .paid{padding:28px 22px;border-radius:18px}
+    .card{box-shadow:6px 6px 0 var(--ink)}
+    .steps{grid-template-columns:1fr 1fr;gap:12px}
+    .steps li:after{display:none}
+    .covers{gap:10px}
+    .incl{grid-template-columns:1fr}
+    .studio-cta .cta,.buy{width:100%;min-width:0;max-width:420px}
+  }
+  @media (max-width:520px){
+    .brand{font-size:0;gap:0}
+    .topnav a.tab{padding:7px 11px;font-size:14px}
+    .covers{grid-template-columns:1fr 1fr;gap:12px}
+  }
+  @media (max-width:380px){
+    .wrap{padding:0 16px}
+    .lede{font-size:17px}
+    .cta{font-size:18px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Money in Blocks, home">
+      <svg class="logo" width="30" height="25" viewBox="0 0 86 70" aria-hidden="true"><rect x="0" y="44" width="26" height="26" rx="3" fill="#14213D"/><rect x="28" y="22" width="26" height="26" rx="3" fill="#14213D"/><rect x="56" y="0" width="26" height="26" rx="3" fill="#C8483F"/></svg>
+      Money in Blocks
+    </a>
+    <span class="tagline">Everyday money, explained.</span>
+    <nav class="topnav" aria-label="Main">
+      <a href="index.html" class="tab">Budget</a>
+      <a href="studio.html" class="tab on" aria-current="page">Blocks Studio</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="studio" class="first">
+  <div class="wrap">
+    <p class="kicker">Blocks Studio · the system behind our videos</p>
+    <h2>Animated explainers about anything, <em>written in code.</em></h2>
+    <p class="sub">No camera, no editing app. Every Money in Blocks video is built with Claude Code: the script, the animation, the voice and the final render. Blocks Studio is that system, ready for your own topic.</p>
+
+    <ol class="steps">
+      <li><strong>Any topic + source</strong><span>You bring a question and where the facts come from.</span></li>
+      <li><strong>Code</strong><span>Claude Code writes the script and the animation in Remotion.</span></li>
+      <li><strong>Voice</strong><span>An AI voice from ElevenLabs reads it, cut sentence by sentence.</span></li>
+      <li><strong>MP4</strong><span>The code renders the vertical video, 1080×1920.</span></li>
+    </ol>
+
+    <div class="proof">
+      <p class="kicker">Made with it</p>
+      <div class="covers">
+        <figure class="vid">
+          <video src="assets/studio/seven-dollar-coffee.mp4" poster="assets/studio/seven-dollar-coffee.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Video: What a $7 coffee really pays for"></video>
+          <figcaption>What a $7 coffee really pays for</figcaption>
+        </figure>
+        <figure class="vid">
+          <video src="assets/studio/pizza-size.mp4" poster="assets/studio/pizza-size.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Video: Two pizzas. Less pizza."></video>
+          <figcaption>Two pizzas. Less pizza.</figcaption>
+        </figure>
+        <figure class="vid">
+          <video src="assets/studio/flight-canceled.mp4" poster="assets/studio/flight-canceled.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Video: What the airline owes you"></video>
+          <figcaption>What the airline owes you</figcaption>
+        </figure>
+        <figure class="vid">
+          <video src="assets/studio/fake-sale.mp4" poster="assets/studio/fake-sale.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Video: Honest prices lost $4 billion"></video>
+          <figcaption>Honest prices lost $4 billion</figcaption>
+        </figure>
+      </div>
+      <p class="caption">Four videos from the channel, made entirely with Blocks Studio. Press play to watch them here, with sound.</p>
+    </div>
+
+    <!-- BORRADOR: el contenido de "What's included" está pendiente de que el usuario lo confirme. Quitar la etiqueta .draft antes de publicar. -->
+    <div class="incl">
+      <div class="card">
+        <h3>What's included <span class="draft">Draft</span></h3>
+        <ul class="ticks">
+          <li><span><b>The project template:</b> Remotion, a kit of animated pieces and worlds in code, and the tools for voice, music, rendering and automatic reviews.</span></li>
+          <li><span><b>The Claude Code skill</b> that takes an idea to a finished MP4, adapted to any niche.</span></li>
+          <li><span><b>A step-by-step setup guide</b> and a video walkthrough.</span></li>
+          <li><span><b>Two complete example projects</b> to open, change and render.</span></li>
+        </ul>
+      </div>
+      <div class="req">
+        <h3>What you need</h3>
+        <ul class="ticks">
+          <li>A Claude subscription with Claude Code</li>
+          <li>An ElevenLabs API key</li>
+          <li>A computer with Node and Python</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="studio-cta">
+      <a class="cta" id="waitlist-cta" href="https://shop.moneyinblocks.com/b/m4nor">Join the waitlist <span class="arr" aria-hidden="true">→</span></a>
+      <a class="buy" id="buy-cta" aria-disabled="true" role="link">Buy <span>Coming soon</span></a>
+    </div>
+    <p class="disclaim">Not affiliated with Anthropic. Claude and Claude Code are products of Anthropic; ElevenLabs and Remotion belong to their owners. You pay for those services separately.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Educational content, not financial advice.</strong> Money in Blocks videos and templates explain how everyday money works. They are not personalized financial, tax or legal advice. A template's result is only as accurate as the numbers you type in.</p>
+    <p>© 2026 Money in Blocks</p>
+    <nav aria-label="Footer">
+      <a href="mailto:hello@moneyinblocks.com">hello@moneyinblocks.com</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  /* Blocks Studio links: change only these two lines. */
+  const WAITLIST_URL = "https://shop.moneyinblocks.com/b/m4nor";   // free Payhip product "Blocks Studio — Waitlist". Empty = email to hello@moneyinblocks.com
+  const BUY_URL = "";        // Payhip checkout link. Empty = "Coming soon" (button off)
+
+  document.querySelectorAll(".vid video").forEach(v => v.addEventListener("play", () =>
+    document.querySelectorAll(".vid video").forEach(o => { if (o !== v) o.pause(); })));
+
+  if (WAITLIST_URL) document.getElementById("waitlist-cta").href = WAITLIST_URL;
+  const buy = document.getElementById("buy-cta");
+  if (BUY_URL) {
+    buy.href = BUY_URL; buy.removeAttribute("aria-disabled"); buy.removeAttribute("role");
+    buy.innerHTML = "Buy Blocks Studio <span aria-hidden=\"true\">→</span>";
+  }
+</script>
+</body>
+</html>
